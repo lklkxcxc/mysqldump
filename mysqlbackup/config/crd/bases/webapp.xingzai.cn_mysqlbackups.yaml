@@ -1,0 +1,62 @@
+---
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  annotations:
+    controller-gen.kubebuilder.io/version: v0.16.4
+  name: mysqlbackups.webapp.xingzai.cn
+spec:
+  group: webapp.xingzai.cn
+  names:
+    kind: Mysqlbackup
+    listKind: MysqlbackupList
+    plural: mysqlbackups
+    singular: mysqlbackup
+  scope: Namespaced
+  versions:
+  - name: v1
+    schema:
+      openAPIV3Schema:
+        description: Mysqlbackup is the Schema for the mysqlbackups API.
+        properties:
+          apiVersion:
+            description: |-
+              APIVersion defines the versioned schema of this representation of an object.
+              Servers should convert recognized schemas to the latest internal value, and
+              may reject unrecognized values.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources
+            type: string
+          kind:
+            description: |-
+              Kind is a string value representing the REST resource this object represents.
+              Servers may infer this from the endpoint the client submits requests to.
+              Cannot be updated.
+              In CamelCase.
+              More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#types-kinds
+            type: string
+          metadata:
+            type: object
+          spec:
+            description: MysqlbackupSpec defines the desired state of Mysqlbackup.
+            properties:
+              backupdb:
+                type: string
+              backuppassword:
+                type: string
+              backupuser:
+                type: string
+              cronjob:
+                type: string
+              mysqlsvcname:
+                description: Foo is an example field of Mysqlbackup. Edit mysqlbackup_types.go
+                  to remove/update
+                type: string
+            type: object
+          status:
+            description: MysqlbackupStatus defines the observed state of Mysqlbackup.
+            type: object
+        type: object
+    served: true
+    storage: true
+    subresources:
+      status: {}

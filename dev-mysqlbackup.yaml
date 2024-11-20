@@ -1,0 +1,14 @@
+apiVersion: webapp.xingzai.cn/v1
+kind: Mysqlbackup
+metadata:
+  labels:
+    app.kubernetes.io/name: dev-mysqlbackup
+    app.kubernetes.io/managed-by: mysqlbackup-operator
+  name: dev-mysqlbackup
+  namespace: test
+spec:
+  mysqlsvcname: mysql-secondary.dev
+  backupuser: root
+  backuppassword: "Xingzai@221"
+  backupdb: chaos
+  cronjob: "10 17 * * *" 

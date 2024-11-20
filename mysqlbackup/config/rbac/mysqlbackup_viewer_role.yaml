@@ -1,0 +1,26 @@
+# permissions for end users to view mysqlbackups.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: mysqlbackup
+    app.kubernetes.io/managed-by: kustomize
+  name: mysqlbackup-viewer-role
+rules:
+- apiGroups:
+  - webapp.xingzai.cn
+  resources:
+  - mysqlbackups
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - webapp.xingzai.cn
+  resources:
+  - mysqlbackups/status
+  verbs:
+  - get
+- apiGroups: ["batch"]
+  resources: ["cronjobs"]
+  verbs: ["get", "list", "watch"]

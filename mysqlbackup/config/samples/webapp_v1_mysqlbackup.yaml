@@ -1,0 +1,9 @@
+apiVersion: webapp.xingzai.cn/v1
+kind: Mysqlbackup
+metadata:
+  labels:
+    app.kubernetes.io/name: mysqlbackup
+    app.kubernetes.io/managed-by: kustomize
+  name: mysqlbackup-sample
+spec:
+  # TODO(user): Add fields here
